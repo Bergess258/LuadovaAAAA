@@ -32,10 +32,44 @@ int main()
 			cout << (int)b[i] << " ";
 		}
 		cout << "\n";
+		int n = length;
 		__asm {
-			movq mm0, qword ptr[a]
-			paddb mm0, qword ptr[b]
-			mov s, mm0
+			push eax
+			push edx
+			push edi
+			push ecx
+			xor eax,eax
+			xor edx, edx
+			xor ecx, ecx
+			xor edi, edi
+			mov eax, dword ptr[s]; //массив куда складываем левый и правый массивы
+			mov edx, dword ptr[a];//массив левый
+			mov edi, dword ptr[b];//массив правый
+			mov ecx, dword ptr[n];//переменная определяющее количество элементов массива.
+		l1:
+			movq mm0, [edx];
+			paddsb mm0, [edi]; -это для CHAR
+			/*paddw mm0, [edi]; -это для INT
+			paddd mm0, [edi]; -это для LONG INT*/
+			movq[eax], mm0;
+			add edx, 8;
+			add edi, 8;
+			add eax, 8; смещение делаем 8, MMX регистр 8 байт!!!!!!
+			sub ecx, 8; -это для CHAR
+			/*sub ecx, 4; -это для INT
+			sub ecx, 2; -это для LONG INT*/
+			jc l2; это так перестраховаться
+			jnz short l1;
+		l2:
+			emms
+			pop ecx
+			pop edi
+			pop edx
+			pop eax
+		}
+		for (size_t i = 0; i < length; i++)
+		{
+			cout << (int)s[i] << " ";
 		}
 	}
 	else

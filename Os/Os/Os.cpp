@@ -1,12 +1,85 @@
-﻿// Os.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
-#include "pch.h"
+﻿#include "pch.h"
 #include <iostream>
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	setlocale(LC_ALL, "Russian");
+	cout << "Выберите формат\n1.Слово\n2.Двойное слово\n3.Квадрослово\n";
+	int c;
+	cin >> c;
+	cout << "Введите размер массива. Затем он заполнится случайными числами\n";
+	size_t length;
+	cin >> length;
+	if (c == 1)
+	{
+		char* a = new char[length];
+		char* b = new char[length];
+		char* s = new char[length];
+		cout << "Первый массив\n";
+		for (size_t i = 0; i < length; i++)
+		{
+			a[i] = rand() % 252 - 126;
+			b[i] = rand() % 252 - 126;
+		}
+		for (size_t i = 0; i < length; i++)
+		{
+			cout << (int)a[i] << " ";
+		}
+		cout << "\nВторой массив\n";
+		for (size_t i = 0; i < length; i++)
+		{
+			cout << (int)b[i] << " ";
+		}
+		cout << "\n";
+		__asm {
+			movq mm0, qword ptr[a]
+			paddb mm0, qword ptr[b]
+			mov s, mm0
+		}
+	}
+	else
+		if (c == 2)
+		{
+			short* a = new short[length];
+			short* b = new short[length];
+			for (size_t i = 0; i < length; i++)
+			{
+				a[i] = rand() % 10;
+				b[i] = rand() % 10;
+			}
+			for (size_t i = 0; i < length; i++)
+			{
+				cout << a[i] + " ";
+			}
+			cout << "\n";
+			for (size_t i = 0; i < length; i++)
+			{
+				cout << b[i] + " ";
+			}
+			cout << "\n";
+		}
+		else
+		{
+			int* a = new int[length];
+			int* b = new int[length];
+			for (size_t i = 0; i < length; i++)
+			{
+				a[i] = rand() % 10;
+				b[i] = rand() % 10;
+			}
+			for (size_t i = 0; i < length; i++)
+			{
+				cout << a[i] + " ";
+			}
+			cout << "\n";
+			for (size_t i = 0; i < length; i++)
+			{
+				cout << b[i] + " ";
+			}
+			cout << "\n";
+		}
+
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
