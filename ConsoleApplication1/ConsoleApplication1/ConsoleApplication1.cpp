@@ -11,19 +11,83 @@ int main()
 	cout << "Выберите формат\n1.Слово\n2.Двойное слово\n3.Квадрослово\n";
 	int c;
 	cin >> c;
-	cout << "Введите размер массива. Затем он саполнится случайными числами";
-	int length;
+	cout << "Введите размер массива. Затем он заполнится случайными числами\n";
+	size_t length;
 	cin >> length;
-	int* a;
-	int* b;
-	a = new int[length];
-	b = new int[length];
-	for (int i = 0; i < length; i++)
+	if (c == 1) 
 	{
-		a[i] = rand() % 10;
-		b[i] = rand() % 10;
+		char* a = new char[length];
+		char* b = new char[length];
+		cout << "Первый массив\n";
+		for (size_t i = 0; i < length; i++)
+		{
+			a[i] = rand() % 252 -126;
+			b[i] = rand() % 252 - 126;
+		}
+		for (size_t i = 0; i < length; i++)
+		{
+			cout << (int)a[i]<<" ";
+		}
+		cout << "\nВторой массив\n";
+		for (size_t i = 0; i < length; i++)
+		{
+			cout << (int)b[i] << " ";
+		}
+		cout << "\n";
+		__asm 
+		{
+			push edi
+			push eax
+			xor edi,edi
+			xor eax,eax
+			mov edi,[a]
+			mov al, byte ptr[a+edi]
+			add edi,8
+			mov ah, byte ptr[a + edi]
+		}
 	}
-
+	else
+		if (c == 2) 
+		{
+			short* a = new short[length];
+			short* b = new short[length];
+			for (size_t i = 0; i < length; i++)
+			{
+				a[i] = rand() % 10;
+				b[i] = rand() % 10;
+			}
+			for (size_t i = 0; i < length; i++)
+			{
+				cout << a[i] + " ";
+			}
+			cout << "\n";
+			for (size_t i = 0; i < length; i++)
+			{
+				cout << b[i] + " ";
+			}
+			cout << "\n";
+		}
+		else 
+		{
+			int* a = new int[length];
+			int* b = new int[length];
+			for (size_t i = 0; i < length; i++)
+			{
+				a[i] = rand() % 10;
+				b[i] = rand() % 10;
+			}
+			for (size_t i = 0; i < length; i++)
+			{
+				cout << a[i] + " ";
+			}
+			cout << "\n";
+			for (size_t i = 0; i < length; i++)
+			{
+				cout << b[i] + " ";
+			}
+			cout << "\n";
+		}
+	
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
