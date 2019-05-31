@@ -1,7 +1,4 @@
-﻿// ConsoleApplication1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
-#include "pch.h"
+﻿#include "pch.h"
 #include <iostream>
 using namespace std;
 
@@ -18,6 +15,7 @@ int main()
 	{
 		char* a = new char[length];
 		char* b = new char[length];
+		char* s = new char[length];
 		cout << "Первый массив\n";
 		for (size_t i = 0; i < length; i++)
 		{
@@ -34,16 +32,10 @@ int main()
 			cout << (int)b[i] << " ";
 		}
 		cout << "\n";
-		__asm 
-		{
-			push edi
-			push eax
-			xor edi,edi
-			xor eax,eax
-			mov edi,[a]
-			mov al, byte ptr[a+edi]
-			add edi,8
-			mov ah, byte ptr[a + edi]
+		__asm {
+			movq mm0, qword ptr[a]
+			paddb mm0, qword ptr[b]
+			mov s, mm0
 		}
 	}
 	else
