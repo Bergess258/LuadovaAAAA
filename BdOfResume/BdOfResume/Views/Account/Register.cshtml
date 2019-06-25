@@ -1,0 +1,64 @@
+﻿@model BdOfResume.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Регистрация";
+}
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="bkregister">
+        <div class="divTable">
+            <h4 style="text-align:center; font-size:35px;">Начало работы с <span style="color: #FF7F00;">Worckforce</span>  Managemeng.</h4>
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <table align="center" cellpadding="5" cellspacing="5" class="forTable">
+                <tr>
+                    <td>@Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })</td>
+                    <td>@Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })</td>
+                    <td>@Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Otch, new { @class = "col-md-2 control-label" })</td>
+                    <td>@Html.TextBoxFor(m => m.Otch, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })</td>
+                    <td>@Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Male, new { @class = "col-md-2 control-label" })</td>
+                    <td style="font-size:18px; color:whitesmoke">Мужчина @Html.RadioButtonFor(m => m.Male, true, new { id = "RadioButtn1" }) Женщина @Html.RadioButtonFor(m => m.Male, false, new { id = "RadioButtn2" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.AccType, new { @class = "col-md-2 control-label" })</td>
+                    <td style="color:black">@Html.DropDownListFor(m=>m.AccType,new SelectList(new string[] {"Администратор","Консультант","Сотрудник отдела продаж"}))</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Login, new { @class = "col-md-2 control-label" })</td>
+                    <td>@Html.TextBoxFor(m => m.Login, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })</td>
+                    <td>@Html.TextBoxFor(m => m.Email, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })</td>
+                    <td>@Html.PasswordFor(m => m.Password, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })</td>
+                    <td>@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" class="btn btn-light" value="Регистрация" style="float:right; font-size:18px" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<link href="~/Content/Mystyle.css" rel="stylesheet" />

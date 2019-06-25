@@ -1,0 +1,73 @@
+﻿@model BdOfResume.Models.BdCount
+@{
+    ViewBag.Title = "Catalog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-top:60px;">
+    <table class="table_price">
+        <caption style="white-space:nowrap">Выберите один из справочников</caption>
+        <tr>
+            <th>Название</th>
+            <th>Кол-во записей</th>
+            <th colspan="2"></th>
+        </tr>
+        <tr>
+            <td>Департаменты</td>
+            <td>@Html.DisplayFor(m => m.DepCount)</td>
+            <td>
+                <button type="button">@Html.ActionLink("Выбрать", "CatalogSelected", "Admin", routeValues: new { catalogName = "Департаменты" }, htmlAttributes: new { @style = "text-decoration:none; color:inherit" })</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Образования</td>
+            <td>@Html.DisplayFor(m => m.EduCount)</td>
+            <td>
+                <button type="button">@Html.ActionLink("Выбрать", "CatalogSelected", "Admin", new { catalogName = "Образования" }, htmlAttributes: new { @style = "text-decoration:none; color:inherit" })</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Посты сотрудников</td>
+            <td>@Html.DisplayFor(m => m.PostCount)</td>
+            <td>
+                <button type="button">@Html.ActionLink("Выбрать", "CatalogSelected", "Admin", new { catalogName = "Посты сотрудников" }, htmlAttributes: new { @style = "text-decoration:none; color:inherit" })</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Роли в проектах</td>
+            <td>@Html.DisplayFor(m => m.RoleCount)</td>
+            <td>
+                <button type="button">@Html.ActionLink("Выбрать", "CatalogSelected", "Admin", new { catalogName = "Роли в проектах" }, htmlAttributes: new { @style = "text-decoration:none; color:inherit" })</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Навыки</td>
+            <td>@Html.DisplayFor(m => m.SkillCount)</td>
+            <td>
+                <button type="button">@Html.ActionLink("Выбрать", "CatalogSelected", "Admin", new { catalogName = "Навыки" }, htmlAttributes: new { @style = "text-decoration:none; color:inherit" })</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Специальности</td>
+            <td>@Html.DisplayFor(m => m.SpecialityCount)</td>
+            <td>
+                <button type="button">@Html.ActionLink("Выбрать", "CatalogSelected", "Admin", new { catalogName = "Специальности" }, htmlAttributes: new { @style = "text-decoration:none; color:inherit" })</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Университеты</td>
+            <td>@Html.DisplayFor(m => m.UnivCount)</td>
+            <td>
+                <button type="button">@Html.ActionLink("Выбрать", "CatalogSelected", "Admin", new { catalogName = "Университеты" }, htmlAttributes: new { @style = "text-decoration:none; color:inherit" })</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Задачи в проектах</td>
+            <td>@Html.DisplayFor(m => m.TaskCount)</td>
+            <td>
+                <button type="button">@Html.ActionLink("Выбрать", "CatalogSelected", "Admin", new { catalogName = "Задачи в проектах" }, htmlAttributes: new { @style = "text-decoration:none; color:inherit" })</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<link href="~/Content/Catalogtable.css" rel="stylesheet" />

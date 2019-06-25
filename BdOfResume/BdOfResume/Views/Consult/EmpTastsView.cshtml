@@ -1,0 +1,58 @@
+﻿@model BdOfResume.Models.forEmpTask
+
+@{
+    ViewBag.Title = "EmpTastsView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("ProjEmp", "Consult", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <h2>Управление вашими выполненными задачами в проектах</h2>
+        @if (Model.avProj != null && Model.avProj.Count == 0)
+        {
+            <div style="color:red">Необходимо добавить проекты</div>
+        }
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => Model.list[0].Participation.Project.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => Model.list[0].Task.Name)
+                </th>
+                <th></th>
+            </tr>
+            @for (int i = 0; i < Model.list.Count - 1; ++i)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.list[i].Participation.Project.Name)
+                        @Html.HiddenFor(m => Model.list[i].Participation.Project.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.list[i].Task.Name)
+                        @Html.HiddenFor(m => Model.list[i].Task.Name)
+                    </td>
+                    <td>
+                        <button type="submit" name="id" value="@Model.list[i].Id">Удалить</button>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td>
+                    @Html.DropDownListFor(m => Model.list[Model.list.Count - 1].Participation.Project.Name, new SelectList(Model.avProj))
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => Model.list[Model.list.Count - 1].Task.Name)
+                    @Html.ValidationMessageFor(model => model.list[Model.list.Count - 1].Task.Name, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    <button type="submit" id="create" name="create" value="true">Создать</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+}

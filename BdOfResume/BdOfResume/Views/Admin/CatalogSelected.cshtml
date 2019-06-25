@@ -1,0 +1,34 @@
+﻿@model BdOfResume.Models.SelectedCat
+@{
+    if (Model.catalogName == null)
+    {
+        Response.Redirect("http://localhost:55098/Admin/Catalog");
+    }
+    ViewBag.Title = Model;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("CatalogSelected", "Admin", new { curCatalog = Model.catalogName }, FormMethod.Post, new { role = "form" }))
+{
+    <div class="container">
+        <h2>
+            @Model.catalogName
+        </h2>
+        <p>
+            <input type="text" name="addedName">
+            <input type="submit" class="btn btn-default" value="Создать" />
+        </p>
+        <table class="table">
+            @foreach (var item in Model.catalog)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-default" name="id" value="@item.Id">Удалить</button>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}

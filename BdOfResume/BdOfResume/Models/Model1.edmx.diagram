@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="539d2bc0d5864224bce89ed379da518c" Name="Diagram1" ZoomLevel="111">
+        <EntityTypeShape EntityType="CoursModel.Autorization" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.Department" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.Education" Width="1.5" PointX="10.375" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.Employee" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.EmployeeEducation" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.EmployeePost" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.EmpSkills" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.EmpTask" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.Participation" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.Post" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.Project" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.Role" Width="1.5" PointX="8.375" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.Skill" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.Speciality" Width="1.5" PointX="4.875" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.Task" Width="1.5" PointX="6" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursModel.University" Width="1.5" PointX="8.625" PointY="11.875" IsExpanded="true" />
+        <AssociationConnector Association="CoursModel.FK__Autorizat__IdEmp__55F4C372" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursModel.FK__EmployeeP__Depar__607251E5" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursModel.FK__EmployeeE__IdEdu__540C7B00" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursModel.FK__EmployeeE__IdEmp__55009F39" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursModel.FK__EmployeeP__Emplo__3D2915A8" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursModel.FK__EmpSkills__IdEmp__3F115E1A" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursModel.FK__Participa__IdEmp__40F9A68C" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursModel.FK__EmployeeE__Speci__5224328E" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursModel.FK__EmployeeE__Unive__531856C7" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursModel.FK__EmployeeP__PostI__30C33EC3" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursModel.FK__EmpSkills__IdSki__29221CFB" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursModel.FK__EmpTask__IdParti__4C6B5938" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursModel.FK__EmpTask__IdTask__4D5F7D71" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursModel.FK__Participa__IdPro__2DE6D218" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursModel.FK__Participa__IdRol__2CF2ADDF" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

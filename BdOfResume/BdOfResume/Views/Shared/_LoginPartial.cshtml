@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right mr-auto dws-menu">
+
+        @if (User.IsInRole("A"))
+        {
+            <li class="nav-item temp">
+                @Html.ActionLink("Здравствуйте, " + User.Identity.GetUserName() + "!", "AdminAccView", "Admin", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+        }
+        else
+        {
+            if (User.IsInRole("K"))
+            {
+            <li class="nav-item temp">
+                @Html.ActionLink("Здравствуйте, " + User.Identity.GetUserName() + "!", "ConsAccView", "Consult", routeValues: null, htmlAttributes: new { title = "Аккаунт" })
+                <ul class="submenu" style="list-style-type:none; margin-left:-30px;margin-top:1px;">
+                    <li >@Html.ActionLink("Общая информация", "ConsAccView", "Consult", routeValues: null, htmlAttributes: new { title = "Аккаунт" })</li>
+                    <li>@Html.ActionLink("Мои Навыки", "SkillsEmp", "Consult", routeValues: null, htmlAttributes: new { title = "Навыки" })</li>
+                    <li>@Html.ActionLink("Проекты", "ProjEmp", "Consult", routeValues: null, htmlAttributes: new { title = "Проекты, в которые вы внесли или еще внесете вклад" })</li>
+                    <li>@Html.ActionLink("Выполненные задачи", "EmpTastsView", "Consult", routeValues: null, htmlAttributes: new { title = "Выполненные в проектах задачи" })</li>
+                    <li>@Html.ActionLink("Мои посты", "TempUnav", "Consult", routeValues: null, htmlAttributes: new { title = "Должности, которые вы занимали или занимаете" })</li>
+                    <li>@Html.ActionLink("Мои образования", "TempUnav", "Consult", routeValues: null, htmlAttributes: new { title = "Образования" })</li>
+                </ul>
+            </li>
+            }
+            else
+            {
+                <li class="nav-item temp">
+                    @Html.ActionLink("Здравствуйте, " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+            }
+        }
+        <li  class="nav-item temp"><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item temp">@Html.ActionLink("Регистрация", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li class="nav-item temp">@Html.ActionLink("Выполнить вход", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

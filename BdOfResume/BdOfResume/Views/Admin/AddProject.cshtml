@@ -1,0 +1,63 @@
+﻿@model BdOfResume.Models.Project
+
+@{
+    ViewBag.Title = "AddProject";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AddProject", "Admin", FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container" style="margin-top:60px;">
+        <table cellpadding="5" cellspacing="5" style="white-space:nowrap">
+            <tr>
+                <td>@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Area, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                <td>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.DateBegin, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                <td>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DateBegin, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DateBegin, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.DateEnd, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                <td>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DateEnd, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DateEnd, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div class="col-md-10">
+                        <input type="submit" class="btn btn-dark" value="Создать" style="float:right" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

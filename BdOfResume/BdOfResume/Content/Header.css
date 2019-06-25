@@ -1,0 +1,36 @@
+﻿.dws-menu li ul {
+    position: absolute;
+    min-width: 232px;
+    
+    display:none;
+}
+.dws-menu li a:hover{
+    transition:all 0.3s ease;
+}
+.dws-menu li > ul li {
+    border: 1px solid #454547;
+    background: #222;
+    left: 0;
+    top: 100%;
+    text-align:center;
+    padding:5px 0 5px 0;
+}
+.dws-menu li > ul li a {
+    text-transform: none;
+    color: white;
+}
+
+.dws-menu li:hover > ul {
+    display: block;
+}
+.submenu li a:hover{color:#D5B45B;}
+.temp a{
+    text-decoration:none;
+    color:white;
+    margin-left:10px;
+    padding:0;
+}
+    .temp a:hover {
+        color: #D5B45B;
+        text-decoration: none;
+    }

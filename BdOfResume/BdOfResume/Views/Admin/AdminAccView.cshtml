@@ -1,0 +1,66 @@
+﻿@model BdOfResume.Models.AccInfo
+@{
+    ViewBag.Title = "AdminAccView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@using (Html.BeginForm("AdminAccView", "Admin", FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.emp.Id)
+    <div class="container" style="margin-top:60px">
+        <aside class="sidebar">
+            <section class="user-card">
+                <div style="padding-top:2em;">
+                    <div class="avatar">
+                        <img src="~/Content/imgs/AdminIcon.jpg" class="" />
+                    </div>
+                    <div class="username">@Model.emp.Surname @Model.emp.Name @Model.emp.MiddleName</div>
+                    <span class="real-name">@Model.Login</span>
+                </div>
+            </section>
+        </aside>
+        <section class="profile-container">
+            <div style="padding:2em; display:flex">
+                <div class="profile-col">
+                    <span class="input-group">
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.Login)
+                        @Html.LabelFor(m => m.Login)
+                    </span>
+                    <span class="input-group">
+                        @Html.TextBoxFor(m => m.emp.Mail)
+                        @Html.LabelFor(m => m.emp.Mail)
+                    </span>
+                    <span class="input-group">
+                        @Html.PasswordFor(m => m.OldPassword)
+                        @Html.LabelFor(m => m.OldPassword)
+                    </span>
+                    <span class="input-group">
+                        @Html.PasswordFor(m => m.NewPassword)
+                        @Html.LabelFor(m => m.NewPassword)
+                    </span>
+                </div>
+                <div class="profile-col">
+                    <span class="input-group">
+                        @Html.TextBoxFor(m => m.emp.Surname)
+                        @Html.LabelFor(m => m.emp.Surname)
+                    </span>
+                    <span class="input-group">
+                        @Html.TextBoxFor(m => m.emp.Name)
+                        @Html.LabelFor(m => m.emp.Name)
+                    </span>
+                    <span class="input-group">
+                        @Html.TextBoxFor(m => m.emp.MiddleName)
+                        @Html.LabelFor(m => m.emp.MiddleName)
+                    </span>
+                    <div>
+                        Мужчина @Html.RadioButtonFor(m => m.emp.Male, true, new { id = "RadioButtn1" }) Женщина @Html.RadioButtonFor(m => m.emp.Male, false, new { id = "RadioButtn2" })
+                    </div>
+                    <input type="submit" class="btn btn-success" value="Сохранить изменения" style="margin-top:5px" />
+                </div>
+            </div>
+        </section>
+    </div>
+    <link href="~/Content/AccountMain.css" rel="stylesheet" />
+}

@@ -1,0 +1,185 @@
+﻿.profile-col forh {
+    margin-top: 0px;
+    line-height: 1.25;
+    color: #0e2a47;
+    margin: 0;
+    text-rendering: optimizeLegibility;
+}
+.sidebar {
+    position: relative;
+    margin-top: 2em;
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 23.23176%;
+}
+.user-card {
+    position: relative;
+    text-align: center;
+    margin-bottom: 2em;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2), 0 0 1px 0 rgba(0,0,0,.2);
+    display: block !important;
+}
+.avatar {
+    display: block;
+    max-width: 120px;
+    height: 120px;
+    box-shadow: 0 0 12px #b3b3b3;
+    border-radius: 100%;
+    overflow: hidden;
+    background-size: 100%;
+    position: relative;
+    margin: 0 auto 1em;
+    border: none;
+}
+.avatar img {
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-radius: 100%;
+}
+.real-name {
+    color: #a6a9ac;
+    display: block;
+    font-size: .8em;
+    padding: 0 1em;
+    word-wrap: break-word;
+}
+.username {
+    color: #333;
+    display: block;
+    padding: 0 1em;
+    word-wrap: break-word;
+}
+.profile-container {
+    margin-bottom: 2em;
+    margin-top: 2em;
+    float: left;
+    display: block;
+    width: 74.41059%;
+    margin-right: 0;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2), 0 0 1px 0 rgba(0,0,0,.2);
+}
+.profile-col {
+    float: left;
+    display: block;
+    width: 48.82117%;
+}
+.input-group input {
+    padding: 1em 2.4em 1em 1em;
+    height: auto;
+    transition: border-color;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 3px;
+    border: 1px solid #e9eaec;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,.06);
+    font-size: 1em;
+    margin-bottom: .75em;
+    width: 100%;
+    user-select: text;
+    display: block;
+}
+.input-group label {
+    color: #0b2239;
+    top: 0;
+    font-size: .8em;
+    padding: 0 .3em;
+    transform: translateY(-50%);
+    transition: all .2s ease-in-out;
+    position: absolute;
+    left: 1em;
+    background-color: #fff;
+    font-weight: 400;
+    cursor: text;
+    pointer-events: none;
+    margin-bottom: .375em;
+    display: block;
+}
+.fordiv {
+    padding: 1em 1.9em 1em 1em;
+    height: auto;
+    transition: border-color;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: 1px solid #e9eaec;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,.06);
+    font-size: 1em;
+    width: 100%;
+    user-select: text;
+    position: relative;
+    border-collapse: separate;
+    display: table-cell;
+}
+.forlabel {
+    color: #0b2239;
+    top: 0;
+    font-size: .8em;
+    padding: 0 .3em;
+    transform: translateY(-50%);
+    transition: all .2s ease-in-out;
+    position: absolute;
+    left: 1em;
+    background-color: #fff;
+    font-weight: 400;
+    cursor: text;
+    pointer-events: none;
+    display: table-cell;
+}
+*, :after, :before {
+    box-sizing: inherit;
+}
+.flat-icon-grave {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    -webkit-transition: opacity .2s cubic-bezier(.895,.03,.685,.22);
+    -moz-transition: opacity .2s cubic-bezier(.895,.03,.685,.22);
+    -o-transition: opacity .2s cubic-bezier(.895,.03,.685,.22);
+    -ms-transition: opacity .2s cubic-bezier(.895,.03,.685,.22);
+    transition: opacity .2s cubic-bezier(.895,.03,.685,.22);
+    opacity: 0;
+    width: 50%;
+    height: 50%;
+    color: #333;
+    cursor: pointer;
+    background: #fff;
+    display: block;
+    border-radius: 0 100% 0 1em;
+    z-index: 1;
+}
+.avatar label:before {
+    font-size: 1.4em;
+    margin-top: 15px;
+    margin-right: 5px;
+    display: inline-block;
+}
+.flat-icon-grave:before {
+    font-family: iconfont !important;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.avatar input { 
+    opacity:0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+    cursor:pointer; 
+    height:120px; 
+    width:120px;
+}

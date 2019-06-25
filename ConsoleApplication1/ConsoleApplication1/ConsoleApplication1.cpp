@@ -1,10 +1,12 @@
 ﻿#include "pch.h"
 #include <iostream>
 #include <ctime>
+#include <string>
 #include "windows.h"
 using namespace std;
 //Из-за разных типов чисел в массивах приходилось писать разные функции для вывода массивов, разве что в разнице и сумме можно было объеденить, но было удобней оставить так
 //Сумма и вычитание идентичны за исключением команд, так что "лучше" посмотреть код одного из них
+//Сделать умножение и деление, а также сравнение не является возможным в данном случае//Видимо из-за того что я изначально сумма и разность сделаны по элементно не получается сделать сразу весь массив. Так как в чистом проекте эти инструкции работают предсказуемо и правильно
 #pragma region Addition
 void Sum(int c, size_t length, int n)
 {
@@ -38,6 +40,7 @@ void Sum(int c, size_t length, int n)
 			push edx;
 			push edi;
 			push ecx;
+			pxor mm0, mm0;
 			xor eax, eax;
 			xor ebx, ebx;
 			xor edx, edx;
@@ -123,6 +126,7 @@ void Sum(int c, size_t length, int n)
 				mov edx, dword ptr[a]; //массив левый
 				mov edi, dword ptr[b]; //массив правый
 				mov ecx, dword ptr[n]; //переменная определяющее количество элементов массива.
+				pxor mm0, mm0;
 			l11:
 				movq mm0, [edx];
 				movq mm1, [edx]
@@ -193,6 +197,7 @@ void Sum(int c, size_t length, int n)
 				mov edx, dword ptr[a];//массив левый
 				mov edi, dword ptr[b];//массив правый
 				mov ecx, dword ptr[n];//переменная определяющее количество элементов массива.
+				pxor mm0, mm0;
 			l13:
 				movq mm0, [edx];
 				paddd mm0, [edi]; -это для  INT //Насыщенной нет
@@ -263,6 +268,7 @@ void Sub(int c, size_t length, int n)
 			mov edx, dword ptr[a];//массив левый
 			mov edi, dword ptr[b];//массив правый
 			mov ecx, dword ptr[n];//переменная определяющее количество элементов массива.
+			pxor mm0, mm0;
 		l1:
 			movq mm0, [edx];
 			movq mm1, [edx]
@@ -273,7 +279,7 @@ void Sub(int c, size_t length, int n)
 			add edx, 8;
 			add edi, 8;
 			add eax, 8; смещение 8, MMX регистр 8 байт
-				add ebx, 8;
+			add ebx, 8;
 			sub ecx, 8; -это для CHAR
 				jc l2; это так перестраховаться
 				jnz short l1;
@@ -338,6 +344,7 @@ void Sub(int c, size_t length, int n)
 				mov edx, dword ptr[a]; //массив левый
 				mov edi, dword ptr[b]; //массив правый
 				mov ecx, dword ptr[n]; //переменная определяющее количество элементов массива.
+				pxor mm0, mm0;
 			l11:
 				movq mm0, [edx];
 				movq mm1, [edx]
@@ -408,6 +415,7 @@ void Sub(int c, size_t length, int n)
 				mov edx, dword ptr[a];//массив левый
 				mov edi, dword ptr[b];//массив правый
 				mov ecx, dword ptr[n];//переменная определяющее количество элементов массива.
+				pxor mm0, mm0;
 			l13:
 				movq mm0, [edx];
 				psubd mm0, [edi]; -это для  INT //Насыщенной нет
@@ -434,26 +442,162 @@ void Sub(int c, size_t length, int n)
 		}
 }
 #pragma endregion
+#pragma region MulAndDiv
+void MulAndDiv() 
+{
+	
+}
+#pragma endregion
+
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	cout << "Выберите формат\n1.Слово\n2.Двойное слово\n3.Квадрослово\n";
-	int c;
-	cin >> c;
+	short cmp1[5], cmp2[5];
+	int s;
+	cout << "Выберите функцию\n1.Сумма\n2.Вычитание\n3.Умножение и деление\n";
+	cin >> s;
 	cout << "Введите размер массива. Затем он заполнится случайными числами\n";
 	size_t length;
 	cin >> length;
 	int n = length;
-	srand(time(0));
-	int s;
-	cout << "Выберите функцию\n1.Сумма\n2.Вычитание\n3.Умножение и деление\n";
-	cin >> s;
-	
-	if (s == 1) Sum(c, length,n);
+	srand(time(NULL));
+	if (s == 1) { 
+		cout << "Выберите формат\n1.Байт\n2.Слово\n3.Двойное слово\n";//не применимо для умножения, оно не работает
+		int c;
+		cin >> c;
+		Sum(c, length, n); 
+	}
 	else
-		if (s == 2) 
+		if (s == 2)
 		{
+			cout << "Выберите формат\n1.Байт\n2.Слово\n3.Двойное слово\n";//не применимо для умножения, оно не работает
+			int c;
+			cin >> c;
 			Sub(c, length, n);
+		}
+		else
+		{
+			if (s == 3) 
+			{
+				//Умножение сколько не пробовал не работает//почему не понятно, при этом на новом проекте заработает
+				int stepen;
+				cout << "n" << "= ";
+				cin >> stepen;
+				int* a = new int[length];
+				int* s1 = new int[length];
+				int* s2 = new int[length];
+				cout << "Первый массив\n";
+				for (size_t i = 0; i < length; i++)
+				{
+					a[i] = rand();
+					Sleep(50);
+				}
+				for (size_t i = 0; i < length; i++)
+				{
+					cout << (int)a[i] << " ";
+				}
+				cout << "\n";
+				__asm
+				{
+					push eax;
+					push edx;
+					push edi;
+					push esi;
+					xor eax, eax;
+					xor edx, edx;
+					xor esi, esi;
+					xor edi, edi;
+					mov eax, dword ptr[stepen]; //степень
+					mov edx, dword ptr[a];//массив левый
+					mov esi, dword ptr[s1];//массив для умножения
+					mov edi, dword ptr[s2];//массив для деления
+					pxor mm0, mm0
+						movq mm0, [edx]
+						psllw  mm0, eax //умножение без знака
+						movq[esi], mm0
+						//деление на 2^n
+						pxor mm0, mm0
+						movq  mm0, [edx]
+						psraw  mm0, eax //деление без знака
+						movq[edi], mm0
+						emms;
+					pop esi;
+					pop edi;
+					pop edx;
+					pop eax;
+				}
+				cout << "Умножение\n";
+				for (int i = 0; i < length; i++)
+				{
+					cout << s1[i] << " ";
+				}
+				cout << "\nДеление\n";
+				for (int i = 0; i < length; i++)
+				{
+					cout << s2[i] << " ";
+				}
+				cout << "\n";
+			}
+			else 
+			{
+				short a[5];
+				short b[5];
+				cout << "Первый массив\n";
+				for (size_t i = 0; i < 5; i++)
+				{
+					a[i] = rand() % 10;
+					Sleep(50);
+					b[i] = rand() % 10;
+					Sleep(50);
+				}
+				for (size_t i = 0; i < 5; i++)
+				{
+					cout << a[i] << " ";
+				}
+				cout << "\nВторой массив\n";
+				for (size_t i = 0; i < 5; i++)
+				{
+					cout << b[i] << " ";
+				}
+				cout << "\n";
+				__asm {
+					push ebx;
+					push eax;
+					push edx;
+					push edi;
+					push ecx;
+					xor eax, eax;
+					xor ebx, ebx;
+					xor edx, edx;
+					xor ecx, ecx;
+					xor edi, edi;
+					pxor mm0, mm0;
+					movq mm0, a;
+					movq mm1, b;
+					pcmpeqw mm1, mm0;
+					movq cmp1, mm1;
+					movq mm1, b;
+					pcmpgtw mm1, mm0;
+					movq cmp2, mm1;
+					emms;
+					pop ecx;
+					pop edi;
+					pop edx;
+					pop eax;
+					pop ebx;
+				}
+				cout << "\nравно(-1)/ неравно(0):\n";
+				for (size_t i = 0; i < 5; i++)
+				{
+					cout << cmp1[i] << " ";
+				}
+				cout << "\nбольше(-1)/ меньше(0):\n";
+				for (size_t i = 0; i < 5; i++)
+				{
+					cout << cmp2[i] << " ";
+				}
+				cout << "\n";
+			}
 		}
 }
 
